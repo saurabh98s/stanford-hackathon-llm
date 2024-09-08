@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Client Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Client Dashboard</h1>
+    </header>
+
+    <main class="main-content">
+        <!-- Create New Case Section -->
+        <section class="create-case">
+            <h2>Create a New Case</h2>
+            <form action="/create_case" method="post" class="case-form">
+                <input type="text" name="description" placeholder="Describe your case" required>
+                <button type="submit" class="btn-primary">Create Case</button>
+            </form>
+        </section>
+
+        <!-- Ongoing Cases Section -->
+        <section class="cases-section">
+            <h2>Your Ongoing Cases</h2>
+            <ul class="case-list">
+                {% for case in cases %}
+                    <li class="case-item">
+                        <a href="/case/{{ case.id }}" class="case-link">{{ case.description }}</a> - 
+                        <span class="case-status">{{ case.status }}</span>
+                        <div class="case-query">
+                            <h4>Queries/Updates:</h4>
+                            <ul class="query-list">
+                                {% for query in case.queries %}
+                                    <li class="query-item">{{ query }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Legal Case Management System</p>
+    </footer>
+</body>
+</html>
