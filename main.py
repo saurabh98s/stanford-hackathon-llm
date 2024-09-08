@@ -117,6 +117,7 @@ async def call_groq_llm(user_input: str):
                         "   - Any specific requests or instructions related to the case.\n\n"
                         "4. **Important Context or Background:**\n   - Any additional context that helps in understanding the case better.\n\n"
                         "5. **Ignore and exclude:**\n   - Unrelated or off-topic information.\n   - Repetitive or irrelevant text that does not contribute to understanding the case.\n"
+                        "NOTE: present a case study citing all of the sources from the past cases and US laws for this particular case to help the lawyer in the response as you are meant to help the laywer"
                     )
                 },
                 {
