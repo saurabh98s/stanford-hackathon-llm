@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Dashboard</h1>
+    <form action="/create_case" method="post">
+        <input type="text" name="description" placeholder="Describe your case" required>
+        <button type="submit">Create Case</button>
+    </form>
+    <h2>Active Cases</h2>
+    <ul>
+        {% for case in cases %}
+            <li><a href="/case/{{ case.id }}">{{ case.description }}</a> - Status: {{ case.status }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
