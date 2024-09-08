@@ -2,11 +2,81 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Legal Case Management</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Case Management System</title>
     <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #0056b3;
+        }
+        .track-container {
+            display: flex;
+            gap: 50px;
+        }
+        .track {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .track h2 {
+            margin-bottom: 15px;
+            color: #0056b3;
+            font-size: 22px;
+        }
+        .track p {
+            margin-bottom: 20px;
+        }
+        .track a {
+            display: block;
+            padding: 10px 20px;
+            margin: 10px 0;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .track a:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <h1>Welcome to the Legal Case Management System</h1>
-    <a href="/client_signup">Sign Up</a> | <a href="/dashboard">Log In</a>
+    <div class="track-container">
+        <!-- Client Track -->
+        <div class="track">
+            <h2>Client Track</h2>
+            <p>For clients who need to manage their legal cases, communicate with lawyers, and track progress.</p>
+            <!-- <a href="/client_signup">Sign Up as Client</a> -->
+            <a href="/dashboard">Log In as Client</a>
+        </div>
+
+        <!-- Lawyer Track -->
+        <div class="track">
+            <h2>Lawyer Track</h2>
+            <p>For lawyers who need to manage cases, communicate with clients, and use AI tools to improve efficiency.</p>
+            <!-- <a href="/lawyer_signup">Sign Up as Lawyer</a> -->
+            <a href="/dashboard">Log In as Lawyer</a>
+        </div>
+    </div>
 </body>
 </html>
