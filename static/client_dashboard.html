@@ -24,26 +24,204 @@
         <section class="cases-section">
             <h2>Your Ongoing Cases</h2>
             <ul class="case-list">
-                {% for case in cases %}
-                    <li class="case-item">
-                        <a href="/case/{{ case.id }}" class="case-link">{{ case.description }}</a> - 
-                        <span class="case-status">{{ case.status }}</span>
-                        <div class="case-query">
-                            <h4>Queries/Updates:</h4>
-                            <ul class="query-list">
-                                {% for query in case.queries %}
-                                    <li class="query-item">{{ query }}</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </li>
-                {% endfor %}
+                <!-- Hardcoded Case Item 1 -->
+                <li class="case-item">
+                    <a href="/case/1" class="case-link">Car accident case with neighbor</a> - 
+                    <span class="case-status-open">Open</span>
+                    <div class="case-query">
+                        <h4>Queries/Updates:</h4>
+                        <ul class="query-list">
+                            <li class="query-item">Need assistance with insurance claims.</li>
+                            <li class="query-item">Court hearing scheduled for next week.</li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- Hardcoded Case Item 2 -->
+                <li class="case-item">
+                    <a href="/case/2" class="case-link">Property damage dispute</a> - 
+                    <span class="case-status-pending">Pending</span>
+                    <div class="case-query">
+                        <h4>Queries/Updates:</h4>
+                        <ul class="query-list">
+                            <li class="query-item">Waiting for opponent's response.</li>
+                            <li class="query-item">Request for additional evidence submitted.</li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- Hardcoded Case Item 3 -->
+                <li class="case-item">
+                    <a href="/case/3" class="case-link">Breach of contract case</a> - 
+                    <span class="case-status-closed">Closed</span>
+                    <div class="case-query">
+                        <h4>Queries/Updates:</h4>
+                        <ul class="query-list">
+                            <li class="query-item">Settlement reached; case closed.</li>
+                            <li class="query-item">Final documents submitted.</li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
+        </section>
+
+        <!-- Chatbot Button Section -->
+        <section class="chatbot-section">
+            <button onclick="openChatbot()" class="btn-primary">Chat with Elle</button>
         </section>
     </main>
 
     <footer class="footer">
         <p>&copy; 2024 Legal Case Management System</p>
     </footer>
+
+    <script>
+        // Function to open the chatbot page in a pop-up
+        function openChatbot() {
+            window.open('/client_bot', 'Chatbot', 'width=500,height=600');
+        }
+    </script>
+
+    <style>
+        .header {
+            padding: 20px;
+            background-color: #0056b3;
+            color: white;
+            text-align: center;
+        }
+
+        .main-content {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .create-case {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .case-form input[type="text"] {
+            padding: 10px;
+            width: 75%;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            padding: 10px 15px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .cases-section {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .case-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .case-item {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .case-item:last-child {
+            border-bottom: none;
+        }
+
+        .case-link {
+            color: #0056b3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .case-status {
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            color: white;
+        }
+
+        .case-status-open {
+            background-color: #198754; /* Darker green for better contrast */
+            color: #ffffff; /* White text for readability */
+            padding: 5px 12px; /* Adds padding for a cleaner look */
+            border-radius: 15px; /* Rounded corners for a softer look */
+            font-size: 14px; /* Slightly larger font size for readability */
+            font-weight: bold; /* Makes the status text stand out */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+            display: inline-block; /* Ensures the element fits neatly */
+        }
+        
+        .case-status-closed {
+            background-color: #c82333; /* Darker red for better contrast */
+            color: #ffffff; /* White text for readability */
+            padding: 5px 12px; /* Adds padding for a cleaner look */
+            border-radius: 15px; /* Rounded corners for a softer look */
+            font-size: 14px; /* Slightly larger font size for readability */
+            font-weight: bold; /* Makes the status text stand out */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+            display: inline-block; /* Ensures the element fits neatly */
+        }
+        
+        .case-status-pending {
+            background-color: #e0a800; /* Darker yellow for better contrast */
+            color: #ffffff; /* White text for readability */
+            padding: 5px 12px; /* Adds padding for a cleaner look */
+            border-radius: 15px; /* Rounded corners for a softer look */
+            font-size: 14px; /* Slightly larger font size for readability */
+            font-weight: bold; /* Makes the status text stand out */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+            display: inline-block; /* Ensures the element fits neatly */
+        }        
+
+        .case-query {
+            margin-top: 10px;
+        }
+
+        .query-list {
+            list-style: square;
+            padding-left: 20px;
+        }
+
+        .query-item {
+            padding: 5px 0;
+            font-size: 14px;
+            color: #444;
+        }
+
+        .chatbot-section {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .footer {
+            margin-top: 20px;
+            padding: 10px 0;
+            width: 100%;
+            text-align: center;
+            background-color: #0056b3;
+            color: white;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </body>
 </html>

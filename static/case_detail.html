@@ -6,11 +6,100 @@
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <h1>Case Details</h1>
-    <p>Description: {{ case.description }}</p>
-    <p>Status: {{ case.status }}</p>
-    <!-- Placeholder for AI insights and suggestions -->
-    <h2>AI Insights</h2>
-    <p>Relevant citations and document suggestions will appear here.</p>
+    <header class="header">
+        <h1>Case Details</h1>
+    </header>
+
+    <main class="main-content">
+        <!-- Case Description -->
+        <section class="case-details">
+            <h2>Case Overview</h2>
+            <p><strong>Description:</strong> Car accident case with a neighbor. The incident occurred when a neighbor's vehicle crashed into the client's parked car, causing significant damage to the front bumper and headlights.</p>
+            <p><strong>Status:</strong> Open</p>
+        </section>
+
+        <!-- AI Insights and Suggestions -->
+        <section class="ai-insights">
+            <h2>AI Insights</h2>
+            <p>The AI has analyzed the case details and identified relevant legal citations and documents that may help strengthen the case. Below are the key suggestions:</p>
+            <ul class="insights-list">
+                <li>
+                    <strong>Relevant Legal Citation:</strong> California Vehicle Code Section 16000-16085, which covers reporting requirements for vehicle accidents involving property damage.
+                </li>
+                <li>
+                    <strong>Suggested Documents:</strong> 
+                    <ul>
+                        <li>Insurance Claim Form: Essential for filing damage claims.</li>
+                        <li>Witness Statements: Gather statements from any witnesses who saw the incident.</li>
+                        <li>Police Report: Obtain a copy of the police report to provide official documentation of the accident.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Next Steps:</strong> 
+                    <ul>
+                        <li>Contact your insurance provider to initiate a claim.</li>
+                        <li>Schedule a vehicle inspection to assess damage costs.</li>
+                        <li>Prepare for a potential court hearing if a settlement cannot be reached.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Legal Case Management System</p>
+    </footer>
+
+    <style>
+        .header {
+            padding: 20px;
+            background-color: #0056b3;
+            color: white;
+            text-align: center;
+        }
+
+        .main-content {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .case-details {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .ai-insights {
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .insights-list {
+            list-style: disc;
+            padding-left: 20px;
+            color: #444;
+        }
+
+        .insights-list li {
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            margin-top: 20px;
+            padding: 10px 0;
+            width: 100%;
+            text-align: center;
+            background-color: #0056b3;
+            color: white;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </body>
 </html>

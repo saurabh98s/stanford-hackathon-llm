@@ -13,10 +13,40 @@ from dotenv import load_dotenv
 import os
 import logging
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
+
 
 load_dotenv()
 # Initialize the FastAPI app
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*']
+)
+
+lawyer_data = {
+    "name": "John Doe",  # Replace with real data from your database
+}
+
+clients_data = [
+    {
+        "name": "Client 1",
+        "email": "client1@example.com",
+        "phone": "123-456-7890",
+        "status": "Active",
+        "cases": [
+            {
+                "id": 1,
+                "description": "Car accident case",
+                "status": "Open",
+                "timestamp": "2024-09-01",
+                "urgency": "High",
+            }
+        ],
+    },
+    # Add more clients as needed
+]
+
 
 print(os.getenv("API_KEY"))
 client = Groq(api_key=os.getenv("API_KEY"))
@@ -49,6 +79,10 @@ class Case(BaseModel):
 async def index(request: Request):
     """Landing page with options to sign up or log in."""
     return templates.TemplateResponse("index.html", {"request": request})
+@app.get("/client_bot")
+async def client_bot(request: Request):
+    """Landing page with options to sign up or log in."""
+    return templates.TemplateResponse("client_bot.html", {"request": request})
 
 # @app.get("/dashboard")
 # async def dashboard(request: Request):
@@ -63,8 +97,7 @@ async def client_dashboard(request: Request):
 @app.get("/lawyer_dashboard")
 async def lawyer_dashboard(request: Request):
     """Dashboard displaying active cases and client information."""
-    return templates.TemplateResponse("lawyer_dashboard.html", {"request": request, "cases": cases})
-
+    return templates.TemplateResponse("lawyer_dashboard.html", {"request": request, "lawyer": lawyer_data, "clients": clients})
 @app.post("/create_case")
 async def create_case(request: Request, description: str = Form(...)):
     """Route for creating a new case from the client side."""
@@ -117,7 +150,7 @@ async def call_groq_llm(user_input: str):
                         "   - Any specific requests or instructions related to the case.\n\n"
                         "4. **Important Context or Background:**\n   - Any additional context that helps in understanding the case better.\n\n"
                         "5. **Ignore and exclude:**\n   - Unrelated or off-topic information.\n   - Repetitive or irrelevant text that does not contribute to understanding the case.\n"
-                        "NOTE: present a case study citing all of the sources from the past cases and US laws for this particular case to help the lawyer in the response as you are meant to help the laywer"
+                        "NOTE: present a case study citing all of the sources from the past cases and US laws for this particular case to help the lawyer in the response as you are meant to help the lawyer and make it markdown formatted"
                     )
                 },
                 {

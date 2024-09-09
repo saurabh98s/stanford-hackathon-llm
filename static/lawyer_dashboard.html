@@ -7,29 +7,103 @@
 </head>
 <body>
     <header class="header">
-        <h1>Lawyer Dashboard</h1>
+        <h1>Welcome, John Doe</h1>
+        <p class="greeting">Manage your clients and cases efficiently from your dashboard</p>
     </header>
 
     <main class="main-content">
+        <!-- Current Clients Section -->
         <section class="clients-section">
             <h2>Current Clients</h2>
             <ul class="client-list">
-                {% for client in clients %}
-                    <li class="client-item">
-                        <h3>{{ client.name }}</h3>
-                        <p>Email: {{ client.email }}</p>
-                        <p>Phone: {{ client.phone }}</p>
-                        <h4>Ongoing Cases:</h4>
-                        <ul class="case-list">
-                            {% for case in client.cases %}
-                                <li class="case-item">
-                                    <a href="/case/{{ case.id }}" class="case-link">{{ case.description }}</a> - 
-                                    <span class="case-status">{{ case.status }}</span>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                {% endfor %}
+                <!-- Client 1 -->
+                <li class="client-item">
+                    <div class="client-header">
+                        <h3>Jane Smith</h3>
+                        <span class="client-status active">Active</span>
+                    </div>
+                    <p>Email: <a href="mailto:jane.smith@example.com">jane.smith@example.com</a></p>
+                    <p>Phone: <a href="tel:+1234567890">+1 234-567-890</a></p>
+                    <h4>Ongoing Cases:</h4>
+                    <ul class="case-list">
+                        <li class="case-item">
+                            <div class="case-header">
+                                <a href="/case/1" class="case-link">Personal Injury Claim - Car Accident</a>
+                                <span class="case-status open">Open</span>
+                            </div>
+                            <div class="case-details">
+                                <p>Created on: 2024-09-01</p>
+                                <p>Urgency: <span class="urgency high">High</span></p>
+                            </div>
+                        </li>
+                        <li class="case-item">
+                            <div class="case-header">
+                                <a href="/case/2" class="case-link">Property Damage Dispute</a>
+                                <span class="case-status pending">Pending</span>
+                            </div>
+                            <div class="case-details">
+                                <p>Created on: 2024-08-25</p>
+                                <p>Urgency: <span class="urgency medium">Medium</span></p>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Client 2 -->
+                <li class="client-item">
+                    <div class="client-header">
+                        <h3>Michael Johnson</h3>
+                        <span class="client-status inactive">Inactive</span>
+                    </div>
+                    <p>Email: <a href="mailto:michael.johnson@example.com">michael.johnson@example.com</a></p>
+                    <p>Phone: <a href="tel:+10987654321">+1 098-765-4321</a></p>
+                    <h4>Ongoing Cases:</h4>
+                    <ul class="case-list">
+                        <li class="case-item">
+                            <div class="case-header">
+                                <a href="/case/3" class="case-link">Breach of Contract - Business Agreement</a>
+                                <span class="case-status closed">Closed</span>
+                            </div>
+                            <div class="case-details">
+                                <p>Created on: 2024-07-15</p>
+                                <p>Urgency: <span class="urgency low">Low</span></p>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Client 3 -->
+                <li class="client-item">
+                    <div class="client-header">
+                        <h3>Emily Davis</h3>
+                        <span class="client-status active">Active</span>
+                    </div>
+                    <p>Email: <a href="mailto:emily.davis@example.com">emily.davis@example.com</a></p>
+                    <p>Phone: <a href="tel:+19876543210">+1 987-654-3210</a></p>
+                    <h4>Ongoing Cases:</h4>
+                    <ul class="case-list">
+                        <li class="case-item">
+                            <div class="case-header">
+                                <a href="/case/4" class="case-link">Divorce Settlement</a>
+                                <span class="case-status open">Open</span>
+                            </div>
+                            <div class="case-details">
+                                <p>Created on: 2024-09-10</p>
+                                <p>Urgency: <span class="urgency high">High</span></p>
+                            </div>
+                        </li>
+                        <li class="case-item">
+                            <div class="case-header">
+                                <a href="/case/5" class="case-link">Child Custody Dispute</a>
+                                <span class="case-status pending">Pending</span>
+                            </div>
+                            <div class="case-details">
+                                <p>Created on: 2024-08-20</p>
+                                <p>Urgency: <span class="urgency medium">Medium</span></p>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </section>
     </main>
@@ -37,5 +111,161 @@
     <footer class="footer">
         <p>&copy; 2024 Legal Case Management System</p>
     </footer>
+
+    <style>
+        .header {
+            padding: 20px;
+            background-color: #0056b3;
+            color: white;
+            text-align: center;
+        }
+
+        .greeting {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .main-content {
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .clients-section {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .client-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .client-item {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .client-item:last-child {
+            border-bottom: none;
+        }
+
+        .client-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .client-status {
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            color: white;
+        }
+
+        .client-status.active {
+            background-color: #28a745;
+        }
+
+        .client-status.inactive {
+            background-color: #6c757d;
+        }
+
+        .client-status.pending {
+            background-color: #ffc107;
+            color: #333;
+        }
+
+        .case-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        .case-item {
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #ffffff; /* White background for the card */
+            border: 1px solid #ddd; /* Subtle border to define the card */
+            border-radius: 8px; /* Rounded corners for a card-like appearance */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth animation effects */
+        }
+
+        .case-item:hover {
+            transform: translateY(-5px); /* Slight lift on hover for interactivity */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+        }
+
+        .case-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .case-link {
+            color: #0056b3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .case-status {
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            color: white;
+        }
+
+        .case-status.open {
+            background-color: #198754;
+        }
+
+        .case-status.closed {
+            background-color: #c82333;
+        }
+
+        .case-status.pending {
+            background-color: #e0a800;
+            color: #ffffff;
+        }
+
+        .case-details {
+            margin-top: 5px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .urgency.low {
+            color: #28a745;
+        }
+
+        .urgency.medium {
+            color: #ffc107;
+        }
+
+        .urgency.high {
+            color: #dc3545;
+        }
+
+        .no-clients {
+            text-align: center;
+            color: #999;
+            padding: 20px;
+        }
+
+        .footer {
+            padding: 10px 0;
+            width: 100%;
+            text-align: center;
+            background-color: #0056b3;
+            color: white;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </body>
 </html>

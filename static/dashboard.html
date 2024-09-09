@@ -6,16 +6,174 @@
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <h1>Dashboard</h1>
-    <form action="/create_case" method="post">
-        <input type="text" name="description" placeholder="Describe your case" required>
-        <button type="submit">Create Case</button>
-    </form>
-    <h2>Active Cases</h2>
-    <ul>
-        {% for case in cases %}
-            <li><a href="/case/{{ case.id }}">{{ case.description }}</a> - Status: {{ case.status }}</li>
-        {% endfor %}
-    </ul>
+    <header class="header">
+        <h1>Welcome, {{ user.name }}</h1>
+        <p class="greeting">Manage your cases effectively from your dashboard</p>
+    </header>
+
+    <main class="main-content">
+        <!-- Create New Case Section -->
+        <section class="create-case">
+            <h2>Create a New Case</h2>
+            <form action="/create_case" method="post" class="case-form">
+                <input type="text" name="description" placeholder="Describe your case" required>
+                <button type="submit" class="btn-primary">Create Case</button>
+            </form>
+        </section>
+
+        <!-- Active Cases Section -->
+        <section class="active-cases">
+            <h2>Active Cases</h2>
+            <ul class="case-list">
+                {% for case in cases %}
+                    <li class="case-item">
+                        <div class="case-header">
+                            <a href="/case/{{ case.id }}" class="case-link">{{ case.description }}</a>
+                            <span class="case-status {{ case.status | lower }}">{{ case.status }}</span>
+                        </div>
+                        <div class="case-details">
+                            <p>Created on: {{ case.timestamp }}</p>
+                            <p>Urgency: <span class="urgency {{ case.urgency | lower }}">{{ case.urgency }}</span></p>
+                        </div>
+                    </li>
+                {% else %}
+                    <li class="no-cases">No active cases available. Create a new case to get started.</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Legal Case Management System</p>
+    </footer>
+
+    <style>
+        .header {
+            padding: 20px;
+            background-color: #0056b3;
+            color: white;
+            text-align: center;
+        }
+
+        .greeting {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .main-content {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .create-case {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .case-form input[type="text"] {
+            padding: 10px;
+            width: 75%;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            padding: 10px 15px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .active-cases {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .case-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .case-item {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .case-item:last-child {
+            border-bottom: none;
+        }
+
+        .case-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .case-link {
+            color: #0056b3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .case-status {
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            color: white;
+        }
+
+        .case-status.open {
+            background-color: #28a745;
+        }
+
+        .case-status.closed {
+            background-color: #dc3545;
+        }
+
+        .case-status.pending {
+            background-color: #ffc107;
+            color: #333;
+        }
+
+        .case-details {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .urgency.low {
+            color: #28a745;
+        }
+
+        .urgency.medium {
+            color: #ffc107;
+        }
+
+        .urgency.high {
+            color: #dc3545;
+        }
+
+        .no-cases {
+            text-align: center;
+            color: #999;
+            padding: 20px;
+        }
+    </style>
 </body>
 </html>
